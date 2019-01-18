@@ -1,0 +1,13 @@
+<resources>
+    <string name="app_name">CustomCalendar</string>
+
+    //////////////////////////////////요일/////////////////////////////////////////////
+    <string name="Monday">월</string>
+    <string name="tuesday">화</string>
+    <string name="wednsday">수</string>
+    <string name="thursday">목</string>
+    <string name="friday">금</string>
+    <string name="saturday">토</string>
+    <string name="sunday">일</string>
+    ////////////////////////////////////////////////////////////////////////////////
+</resources>
