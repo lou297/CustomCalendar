@@ -17,13 +17,62 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal">
-            <TextView
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="일"
-                    android:textSize="18dp"
-                    android:textColor="#000000"/>
+        <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="@string/Sunday"
+                android:textSize="@dimen/Calendar_Day_Text_Size"
+                android:textColor="@color/Black"/>
+        <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="@string/Monday"
+                android:textSize="@dimen/Calendar_Day_Text_Size"
+                android:textColor="@color/Black"/>
+        <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="@string/Tuesday"
+                android:textSize="@dimen/Calendar_Day_Text_Size"
+                android:textColor="@color/Black"/>
+        <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="@string/Wednsday"
+                android:textSize="@dimen/Calendar_Day_Text_Size"
+                android:textColor="@color/Black"/>
+        <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="@string/Thursday"
+                android:textSize="@dimen/Calendar_Day_Text_Size"
+                android:textColor="@color/Black"/>
+        <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="@string/Friday"
+                android:textSize="@dimen/Calendar_Day_Text_Size"
+                android:textColor="@color/Black"/>
+        <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="@string/Saturday"
+                android:textSize="@dimen/Calendar_Day_Text_Size"
+                android:textColor="@color/Black"/>
     </LinearLayout>
 
 </LinearLayout>
