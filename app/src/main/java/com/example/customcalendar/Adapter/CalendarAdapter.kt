@@ -3,6 +3,8 @@ package com.example.customcalendar.Adapter
 import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
+import android.view.View.INVISIBLE
+import android.view.View.VISIBLE
 import android.view.ViewGroup
 import android.widget.TextView
 import com.example.customcalendar.DataClasss.Day_Calendar
@@ -21,6 +23,13 @@ class CalendarAdapter (val DateList : ArrayList<Day_Calendar>) : RecyclerView.Ad
 
     override fun onBindViewHolder(holder: DateViewHolder, position: Int) {
         val SpecificDate = DateList.get(position)
+        if(SpecificDate.Date==0){
+            holder.Date.visibility = INVISIBLE
+        }
+        else{
+            holder.Date.visibility = VISIBLE
+            holder.Date.text = SpecificDate.Date.toString()
+        }
         holder.Date.text =  SpecificDate.Date.toString()
         if(SpecificDate.IsHoliday == true)
             holder.Holiday.text = SpecificDate.Holiday
