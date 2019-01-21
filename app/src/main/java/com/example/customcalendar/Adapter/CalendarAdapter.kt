@@ -1,6 +1,8 @@
 package com.example.customcalendar.Adapter
 
+import android.annotation.SuppressLint
 import android.support.v7.widget.RecyclerView
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.View.INVISIBLE
@@ -21,14 +23,21 @@ class CalendarAdapter (val DateList : ArrayList<Day_Calendar>) : RecyclerView.Ad
         return DateList.size
     }
 
+    @SuppressLint("ResourceAsColor")
     override fun onBindViewHolder(holder: DateViewHolder, position: Int) {
         val SpecificDate = DateList.get(position)
         if(SpecificDate.Date==0){
             holder.Date.visibility = INVISIBLE
         }
         else{
-            holder.Date.visibility = VISIBLE
             holder.Date.text = SpecificDate.Date.toString()
+            if(SpecificDate.IsHoliday==true) {
+                holder.Date.setTextColor(R.color.SaturdayBlue)
+                Log.d("zz",holder.Date.text.toString())
+                Log.d("zz",holder.Date.visibility.toString())
+                Log.d("zz",holder.Date.textColors.toString())
+            }
+            holder.Date.visibility = VISIBLE
         }
         holder.Date.text =  SpecificDate.Date.toString()
         if(SpecificDate.IsHoliday == true)
