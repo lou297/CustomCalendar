@@ -1,8 +1,10 @@
 package com.example.customcalendar
 
+import android.content.Intent
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.support.v7.widget.GridLayoutManager
+import android.util.Log
 import android.widget.GridLayout
 import com.example.customcalendar.Adapter.CalendarAdapter
 import com.example.customcalendar.DataClasss.Day_Calendar
@@ -25,10 +27,20 @@ class MainActivity : AppCompatActivity() {
             DateList.add(Day_Calendar(Date=0))
         }
 
-        for(i in 1..Calendar.getInstance().getActualMaximum(Calendar.DATE)){
-            DateList.add(Day_Calendar(Date=i))
-        }
+        var GetDayOfWeek = Calendar.getInstance()
+        val PresentYear = GetDayOfWeek.get(Calendar.YEAR)
+        val PresentMonth = GetDayOfWeek.get(Calendar.MONTH)
 
+        for(i in 1..Calendar.getInstance().getActualMaximum(Calendar.DATE)){
+            GetDayOfWeek.set(PresentYear,PresentMonth,i)
+            if(GetDayOfWeek.get(Calendar.DAY_OF_WEEK)==1)
+                DateList.add(Day_Calendar(Date=i,IsHoliday = true))
+            else
+                DateList.add(Day_Calendar(Date=i))
+        }
+        NextBut.setOnClickListener{
+            startActivity(Intent(this,CalendarView::class.java))
+        }
 
         CalendarRecyclerView.layoutManager = GridLayoutManager(this,7)
         CalendarRecyclerView.adapter = CalendarAdapter(DateList)
