@@ -31,6 +31,8 @@ class MainActivity : AppCompatActivity() {
         val PresentYear = GetDayOfWeek.get(Calendar.YEAR)
         val PresentMonth = GetDayOfWeek.get(Calendar.MONTH)
 
+
+
         for(i in 1..Calendar.getInstance().getActualMaximum(Calendar.DATE)){
             GetDayOfWeek.set(PresentYear,PresentMonth,i)
             if(GetDayOfWeek.get(Calendar.DAY_OF_WEEK)==1)
@@ -41,6 +43,8 @@ class MainActivity : AppCompatActivity() {
         NextBut.setOnClickListener{
             startActivity(Intent(this,CalendarView::class.java))
         }
+
+
 
         CalendarRecyclerView.layoutManager = GridLayoutManager(this,7)
         CalendarRecyclerView.adapter = CalendarAdapter(DateList)
