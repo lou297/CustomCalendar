@@ -1,5 +1,6 @@
 package com.example.customcalendar.CalendarFragment
 
+import android.app.Activity
 import android.arch.lifecycle.Lifecycle
 import android.os.Bundle
 import android.support.v4.app.Fragment
@@ -10,42 +11,48 @@ import android.view.View
 import android.view.ViewGroup
 import com.example.customcalendar.Adapter.CalendarAdapter
 import com.example.customcalendar.CalendarView
+import com.example.customcalendar.CalendarView.Companion.ShowMonth
+import com.example.customcalendar.CalendarView.Companion.ShowYear
 import com.example.customcalendar.DataClasss.Day_Calendar
 import com.example.customcalendar.R
+import kotlinx.android.synthetic.main.activity_calendar_view.*
 import kotlinx.android.synthetic.main.fragment_previous_month.*
 import kotlinx.android.synthetic.main.fragment_this_month.*
 import java.util.*
 
 class ThisMonthFragment : Fragment() {
 
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
 
-//        SetCalendar(SetDate())
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
 
         return inflater.inflate(R.layout.fragment_this_month, container, false)
     }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
-        Log.d("test2",CalendarView.ShowYear.toString())
-        Log.d("test2",CalendarView.ShowMonth.toString())
         SetDate(CalendarView.ShowYear, CalendarView.ShowMonth)
         super.onActivityCreated(savedInstanceState)
     }
 
+
+
     override fun setUserVisibleHint(isVisibleToUser: Boolean) {
-        if (isVisibleToUser&&ThisMonthFragment::getLifecycle==Lifecycle.Event.ON_CREATE) {
-            Log.d("test444", "들어옴")
+        if (isVisibleToUser&&this.lifecycle.currentState==Lifecycle.State.RESUMED) {
             SetDate(CalendarView.ShowYear, CalendarView.ShowMonth)
+            Log.d("Test6","보인당")
+        }
+        else if(isVisibleToUser==false&&this.lifecycle.currentState==Lifecycle.State.RESUMED){
+            Log.d("testCalendar","this 에서는 !${ShowYear}년 ${ShowMonth}월")
+            SetDate(CalendarView.ShowYear, CalendarView.ShowMonth)
+            this.activity!!.CalendarViewPager.setCurrentItem(1,false)
+            Log.d("Test6","안보인당")
         }
         super.setUserVisibleHint(isVisibleToUser)
     }
 
-    private fun SetDate(ShowYear: Int, ShowMonth: Int) {
+    internal fun SetDate(ShowYear: Int, ShowMonth: Int) {
         ThisYear.text = "${ShowYear}년"
         ThisMonth.text = "${ShowMonth + 1}월"
 
-        Log.d("test3",(ShowYear).toString())
-        Log.d("test3",(ShowMonth+1).toString())
         val calendar = Calendar.getInstance()
         calendar.set(ShowYear, ShowMonth, 1)
 
